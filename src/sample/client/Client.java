@@ -55,8 +55,7 @@ public class Client {
 
                 // handle input from server
                 while (serverSocket.getInputStream() != null) {
-                    Message message = (Message) objectInputStream.readObject();
-                    onServerInputHandler.accept(message.getBody());
+                    onServerInputHandler.accept(objectInputStream.readObject().toString());
                 }
 
             } catch (UnknownHostException | ConnectException e) {
@@ -72,11 +71,12 @@ public class Client {
         }).start();
     }
 
-    public void sendMessageToServer(String message) throws IOException {
+    public void sendMessageToServer(String message, Runnable callback) throws IOException {
         if(isConnectedToServer) {
             objectOutputStream.writeObject(new Message(message));
+
+            callback.run();
         }
     }
-
 
 }

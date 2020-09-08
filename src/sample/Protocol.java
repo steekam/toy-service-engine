@@ -1,7 +1,6 @@
 package sample;
 
 import sample.models.Message;
-import sample.models.Toy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class Protocol {
             )
     );
 
-    public int currentRequestType;
+    public int currentRequestType = 0;
 
     /**
      * Returns message object to be sent to the client
@@ -44,23 +43,9 @@ public class Protocol {
      * @return Message
      */
     public Message processInput(Object inputObject, Consumer<String> callback) {
-        String body;
+        callback.accept(inputObject.toString());
 
-        if (currentRequestType == REQUEST_THANK_YOU) {
-
-            callback.accept(((Message) inputObject).getBody());
-
-            body = "You are so welcome :)";
-        } else {
-            Toy toy = (Toy) inputObject;
-
-            // TODO: for now just serialize the toy
-            callback.accept(toy.toString());
-
-            body = "Response received";
-        }
-
-        return new Message(body);
+        return new Message("Response received");
     }
 
 }

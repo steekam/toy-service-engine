@@ -44,7 +44,7 @@ public class ServerController implements Initializable {
     }
 
     private void onNewConnectionHandler(ClientConnection clientConnection) {
-        printToServerLog("New client connected on port " + clientConnection.getClientSocket().getPort());
+        printToServerLog("New client connected on " + clientConnection.getClientSocket().getRemoteSocketAddress());
 
         // On new input handler
         clientConnection.setOnInputFromClientHandler(messageString ->
@@ -58,7 +58,8 @@ public class ServerController implements Initializable {
     }
 
     private void removeClientFromOptions(String clientName) {
-        System.out.println("Runs?");
+        printToServerLog(clientName + " has disconnected.");
+
         toyServiceServer.removeDisconnectedClient(clientName);
 
         connectedClients.getItems().setAll(

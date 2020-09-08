@@ -13,6 +13,7 @@ import sample.ValidationHelper;
 import sample.client.Client;
 import sample.models.Toy;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -76,8 +77,11 @@ public class ClientController implements Initializable {
 
     public ClientController() {
         clientProvider = new Client();
-        clientProvider.setOnServerInputHandler((this::printToClientLog));
+
+        clientProvider.setOnServerInputHandler(body -> Platform.runLater(() -> printToClientLog(body) ));
+
         clientProvider.setOnErrorHandler((this::printToClientLog));
+
         clientProvider.setOnServerDisconnectHandler(() -> {
             serverConnectionStatus.setSelected(false);
             printToClientLog("The server connection has been lost");
@@ -133,13 +137,31 @@ public class ClientController implements Initializable {
         countryField.textProperty().bindBidirectional(toy.getManufacturer().countryProperty());
 
         dateOfManufacture.valueProperty().addListener(((observableValue, oldDate, newDate) -> {
-                toy.setDateOfManufacture(newDate == null ? null : newDate.toString());
+            toy.setDateOfManufacture(newDate == null ? null : newDate.toString());
         }));
     }
 
     public void clearAll() {
         toy.resetValues();
         dateOfManufacture.setValue(null);
+    }
+
+    public void sayThankYou() {
+        try {
+            clientProvider.sendMessageToServer(String.format("Thank you <%s>", UUID.randomUUID()), () -> printToClientLog("Sending Thank you message to server"));
+        } catch (IOException exception) {
+            printToClientLog("Error: Could not send thank you message.");
+            exception.printStackTrace();
+        }
+    }
+
+    public void submitToServer() {
+        try {
+            clientProvider.sendMessageToServer(toy.toString(), () -> printToClientLog("Sending: "+toy.toString()));
+        } catch (IOException exception) {
+            printToClientLog("Error: Could not send toy details.");
+            exception.printStackTrace();
+        }
     }
 
     private void printToClientLog(String message) {

@@ -58,7 +58,7 @@
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
             <children>
-               <JFXButton layoutX="571.0" layoutY="14.0" styleClass="btn-white" text="Say Thank You" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <JFXButton onAction="#sayThankYou" layoutX="571.0" layoutY="14.0" styleClass="btn-white" text="Say Thank You" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <font>
                      <Font size="12.0" />
                   </font>
@@ -94,7 +94,7 @@
                   </children>
                </HBox>
                <Separator layoutX="15.0" layoutY="507.0" prefHeight="3.0" prefWidth="328.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-               <JFXButton fx:id="clearAllButton" defaultButton="true" layoutX="554.0" layoutY="519.0" styleClass="btn-primary" text="Submit to Server" AnchorPane.rightAnchor="0.0" />
+               <JFXButton fx:id="clearAllButton" onAction="#submitToServer" defaultButton="true" layoutX="554.0" layoutY="519.0" styleClass="btn-primary" text="Submit to Server" AnchorPane.rightAnchor="0.0" />
                <JFXButton fx:id="submitToServerButton" onAction="#clearAll" cancelButton="true" layoutX="467.0" layoutY="519.0" styleClass="btn-white" text="Clear All" AnchorPane.rightAnchor="170.0" />
             </children>
          </AnchorPane>
