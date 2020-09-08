@@ -15,8 +15,9 @@ export PATH_TO_FX=path/to/javafx-sdk-14/lib
 ```
 
 Windows:
+Ensure you are the administrator of your system and follow these [steps](https://www.java.com/en/download/help/path.xml) according to your version of Windows.
 ```shell script
-set PATH_TO_FX="path\to\javafx-sdk-14\lib"
+set a new System Variable PATH_TO_FX to 'path\to\javafx-sdk-14\lib'
 ```
 
 ## Running in the terminal
