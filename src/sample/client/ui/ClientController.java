@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import sample.Util;
 import sample.ValidationHelper;
-import sample.client.Client;
+import sample.client.SocketClient;
 import sample.models.Toy;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.*;
 
 public class ClientController implements Initializable {
-    private final Client clientProvider;
+    private final SocketClient clientProvider;
 
     @FXML
     public TextArea clientLog;
@@ -76,7 +76,7 @@ public class ClientController implements Initializable {
     private JFXButton submitToServerButton;
 
     public ClientController() {
-        clientProvider = new Client();
+        clientProvider = new SocketClient();
 
         clientProvider.setOnServerInputHandler(body -> Platform.runLater(() -> printToClientLog(body) ));
 

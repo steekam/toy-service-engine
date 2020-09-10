@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
-public class ToyServiceServer {
+public class SocketServer {
     private boolean isConnected = false;
 
     private ServerSocket serverSocket;

@@ -11,13 +11,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import sample.Util;
 import sample.server.ClientConnection;
-import sample.server.ToyServiceServer;
+import sample.server.SocketServer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ServerController implements Initializable {
-    private final ToyServiceServer toyServiceServer;
+    private final SocketServer toyServiceServer;
     @FXML
     public JFXToggleButton toggleConnectionButton;
     @FXML
@@ -30,7 +30,7 @@ public class ServerController implements Initializable {
     public JFXButton sendClientRequestButton;
 
     public ServerController() {
-        toyServiceServer = new ToyServiceServer();
+        toyServiceServer = new SocketServer();
     }
 
     @Override

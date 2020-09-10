@@ -11,7 +11,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.function.Consumer;
 
-public class Client {
+public class SocketClient {
     private boolean isConnectedToServer = false;
 
     private ObjectInputStream objectInputStream;
