@@ -15,12 +15,14 @@ export PATH_TO_FX=path/to/javafx-sdk-14/lib
 ```
 
 Windows:
+
+Ensure you are the administrator of your system and follow the steps listed [here](https://www.java.com/en/download/help/path.xml), depending on your version of Windows.
 ```shell script
-set PATH_TO_FX="path\to\javafx-sdk-14\lib"
+set a new System Variable PATH_TO_FX with the value 'path\to\javafx-sdk-14\lib'
 ```
 
 ## Running in the terminal
-In the `out/artifacts` there is an executable file for a server and client.
+In the `out/artifacts` there are executable JAR files and shell scripts for the server and client.
 Click to run or execute in the terminal.
 
 Here are the commands if you want to run them directly.
